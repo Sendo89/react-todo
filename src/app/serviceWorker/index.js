@@ -133,3 +133,7 @@ export function unregister() {
     });
   }
 }
+
+export const bootstrap = async () => {
+  //
+}
