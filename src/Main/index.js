@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import logo from '../app/assets/images/logo.svg';
-import './Main.css';
+import React, { Component } from 'react'
+import AddItemsSection from '../components/ToDoList/AddItemsSection'
+import ItemsListSection from '../components/ToDoList/ItemsListSection'
+import MlIcon from '../MyLib/Icon'
 
 class Main extends Component {
   render() {
     return (
-      <div className="Main">
-        <header className="Main-header">
-          <img src={logo} className="Main-logo" alt="logo" />
-          <p>
-            Edit <code>src/Main.js</code> and save to reload.
-          </p>
-          <a
-            className="Main-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className="Main flex-1 w-full bg-black h-full flex flex-col">
+        <header className="border-b border-white py-4">
+          <div className="text-right">
+            <MlIcon prefix="fab" icon="react" size="2x" color="white" />
+          </div>
         </header>
+
+        <div className="flex-1">
+          <AddItemsSection />
+
+          <ItemsListSection />
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default Main;
+export default Main

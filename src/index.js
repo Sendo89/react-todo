@@ -5,6 +5,7 @@ import prepareApplication from './app/bootstrap'
 
 import Main from './Main'
 import './styles/index.css'
+import './styles/tailwind.css'
 
 (async () => {
   await prepareApplication()
