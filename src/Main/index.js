@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import AddItemsSection from '../components/ToDoList/AddItemsSection'
-import ItemsListSection from '../components/ToDoList/ItemsListSection'
-import MlIcon from '../MyLib/Icon'
+import AddItemsSection from 'components/ToDoList/AddItemsSection'
+import ItemsListSection from 'components/ToDoList/ItemsListSection'
+import MlIcon from 'MyLib/Icon'
 
 class Main extends Component {
   render() {

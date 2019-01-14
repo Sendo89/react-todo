@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class AddItemsSection extends Component {
   render() {
@@ -6,8 +6,8 @@ class AddItemsSection extends Component {
       <div className="AddItemsSection">
         AddItemsSection
       </div>
-    );
+    )
   }
 }
 
-export default AddItemsSection;
+export default AddItemsSection
