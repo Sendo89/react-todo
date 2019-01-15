@@ -109,7 +109,7 @@ class Main extends Component {
   render() {
     return (
       <div className="ToDoList flex-1 w-full h-full flex flex-col">
-        <div className="mb-4">
+        <div className="my-8">
           <div className="flex">
             <h1 className="flex-1 text-grey-darkest">
               Todo List

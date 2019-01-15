@@ -12,26 +12,18 @@ class Main extends Component {
       <div className="Main flex-1 w-full h-full flex flex-col">
         <header className="bg-black border-b border-white py-4">
           <div className="flex justify-between m-auto w-full lg:w-3/4 lg:max-w-lg">
-            <div
-              className="cursor-pointer"
-              onClick={this.handleBackButton}>
+            <div>
               <MlIcon
-                prefix="fas"
-                icon="arrow-left"
+                prefix="fab"
+                icon="react"
                 size="2x"
-                color="white"/>
+                color="white" />
             </div>
 
-            <div className="flex justify-around">
+            <div className="flex-1 flex justify-end">
               <div className="text-white p-2"><Link className="text-white" to='/'>Welcome</Link></div>
               <div className="text-white p-2"><Link className="text-white" to='/todo-list'>TodoList</Link></div>
             </div>
-
-            <MlIcon
-              prefix="fab"
-              icon="react"
-              size="2x"
-              color="white" />
           </div>
         </header>
 
