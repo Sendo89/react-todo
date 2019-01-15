@@ -5,6 +5,7 @@ import MlIcon from 'MyLib/Icon'
 
 import Welcome from 'components/Welcome'
 import ToDoList from 'components/ToDoList'
+import QuoteGenerator from 'components/QuoteGenerator'
 
 class Main extends Component {
   render() {
@@ -23,6 +24,7 @@ class Main extends Component {
             <div className="flex-1 flex justify-end">
               <div className="text-white p-2"><Link className="text-white" to='/'>Welcome</Link></div>
               <div className="text-white p-2"><Link className="text-white" to='/todo-list'>TodoList</Link></div>
+              <div className="text-white p-2"><Link className="text-white" to='/quote-generator'>Quote Generator</Link></div>
             </div>
           </div>
         </header>
@@ -32,6 +34,7 @@ class Main extends Component {
             <Switch>
               <Route exact path='/' component={Welcome}/>
               <Route path='/todo-list' component={ToDoList}/>
+              <Route path='/quote-generator' component={QuoteGenerator}/>
             </Switch>
           </div>
         </div>
