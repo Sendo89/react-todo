@@ -24,6 +24,8 @@ class TodoItem extends Component {
 
   render() {
     const statusBasedClasses = this.props.status === 'done' ? 'line-through text-green-dark' : 'text-grey-dark'
+    const notDoneButtonClasses = this.props.status === 'not-done' ? 'text-white bg-grey' : 'text-grey bg-white'
+    const doneButtonClasses = this.props.status === 'done' ? 'text-white bg-green' : 'text-green bg-white'
 
     return (
       <div className="TodoItem w-full flex my-4">
@@ -33,19 +35,19 @@ class TodoItem extends Component {
         </p>
 
         <button
-          className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-grey border-grey hover:bg-grey"
+          className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white border-grey hover:bg-grey ${notDoneButtonClasses}`}
           onClick={this.handleNotDone}>
           Not Done
         </button>
 
         <button
-          className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
+          className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white border-green hover:bg-green ${doneButtonClasses}`}
           onClick={this.handleDone}>
           Done
         </button>
 
         <button
-          className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
+          className="flex-no-shrink p-2 ml-2 text-red hover:text-red-darker"
           onClick={this.handleDelete}>
           <MlIcon icon="times" />
         </button>

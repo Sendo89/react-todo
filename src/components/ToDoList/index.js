@@ -4,7 +4,7 @@ import ItemsListSection from 'components/ToDoList/ItemsListSection'
 import MlIcon from 'MyLib/Icon'
 
 const getInitialState = () => {
-  const initialTaskNumber = window.faker.random.number({ min: 1, max: 5 })
+  const initialTaskNumber = window.faker.random.number({ min: 1, max: 10 })
   const taskList = []
 
   for (var i = 0; i < initialTaskNumber; i++) {

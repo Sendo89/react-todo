@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TodoItem from 'components/ToDoList/ItemsListSection/TodoItem'
+import ToDoItem from 'components/ToDoList/ItemsListSection/ToDoItem'
 
 class ItemsListSection extends Component {
   constructor () {
@@ -23,7 +23,7 @@ class ItemsListSection extends Component {
 
   render() {
     const rows = this.props.taskList.map(task => {
-      return <TodoItem
+      return <ToDoItem
         key={task.id}
         id={task.id}
         name={task.name}
