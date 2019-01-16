@@ -1,3 +1,15 @@
 @tailwind preflight;
 
+body {
+  @apply  .min-h-full-vh .min-w-full-vw .m-0 .p-0 .font-sans .leading-tight;
+}
+
+#root {
+  @apply .min-h-full-vh .min-w-full-vw .flex .flex-col;
+}
+
+.markup-code {
+  @apply .font-mono .bg-grey-lighter .px-2 .py-1;
+}
+
 @tailwind utilities;

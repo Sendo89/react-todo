@@ -12,7 +12,7 @@ class Main extends Component {
     return (
       <div className="Main flex-1 w-full h-full flex flex-col">
         <header className="bg-black border-b border-white py-4">
-          <div className="flex justify-between m-auto w-full lg:w-3/4 lg:max-w-lg">
+          <div className="flex justify-between m-auto w-full lg:w-3/4 lg:max-w-320">
             <div>
               <MlIcon
                 prefix="fab"
@@ -30,7 +30,7 @@ class Main extends Component {
         </header>
 
         <div className="flex-1 flex flex-col items-center justify-start bg-grey-lightest font-sans">
-          <div className="flex-1 flex flex-col bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+          <div className="flex-1 flex flex-col bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-320">
             <Switch>
               <Route exact path='/' component={Welcome}/>
               <Route path='/todo-list' component={ToDoList}/>

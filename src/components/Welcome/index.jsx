@@ -28,7 +28,7 @@ class Welcome extends Component {
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-start">
-          <div className="rounded rounded-t-lg overflow-hidden shadow max-w-sm my-3">
+          <div className="rounded rounded-t-lg overflow-hidden shadow max-w-80 my-3">
               <img
                 src={cardBackground}
                 className="w-full"

@@ -4,7 +4,7 @@ class QuoteCard extends Component {
   render () {
     return (
       <div className="QuoteCard">
-        <div className="max-w-xs sm:max-w-sm mt-8 mx-auto bg-grey-light rounded-lg shadow p-8">
+        <div className="max-w-80 sm:max-w-160 mt-8 mx-auto bg-grey-light rounded-lg shadow p-8">
           <h2 className="italic text-right text-grey-darkest leading-normal">
             { this.props.text }
           </h2>

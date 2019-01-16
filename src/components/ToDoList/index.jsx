@@ -124,7 +124,7 @@ class Main extends Component {
             </button>
           </div>
           <p className="text-grey-darkest my-4">
-            This is a simple todo list example. There is some fake data generated with FakerJs. Feel free to add or remove new data. If you want to reset this initial configuration, with another random data, just press 'Reset' button. Enjoy!
+            This is a simple todo list example. There is some fake data generated with <span className="markup-code">FakerJs</span>. Feel free to add or remove new data. If you want to reset this initial configuration, with another random data, just press 'Reset' button. Enjoy!
           </p>
 
           <AddItemsSection

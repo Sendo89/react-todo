@@ -55,22 +55,6 @@ class QuoteGenerator extends Component {
             </h1>
             <button
               className="flex-no-shrink p-2 px-4 border-2 rounded text-black border-black hover:text-white hover:bg-black"
-              onClick={this.handleReset}>
-              <MlIcon
-                icon="sync-alt"
-                size="xs" />
-              <span className="ml-4">Reset</span>
-            </button>
-          </div>
-          <p className="text-grey-darkest my-4">
-            This example is a simple quote generator. In this case, i am using axios for making a request to a github gist from camperbot.
-          </p>
-        </div>
-
-        <div className="flex-1 flex flex-col items-center justify-start">
-          <div className="flex flex-col items-center justify-start">
-            <button
-              className="flex-no-shrink p-2 px-4 border-2 rounded text-black border-black hover:text-white hover:bg-black"
               onClick={this.handleRandomQuote}>
               <MlIcon
                 icon="random"
@@ -78,6 +62,12 @@ class QuoteGenerator extends Component {
               <span className="ml-4">Get random quote!</span>
             </button>
           </div>
+          <p className="text-grey-darkest my-4">
+            This example is a simple quote generator. In this case, I am using <span className="markup-code">axios</span> for making a request to a github gist from camperbot.
+          </p>
+        </div>
+
+        <div className="flex-1 flex flex-col items-center justify-start">
           <div className="flex-1 flex flex-col items-center justify-start">
             { displayQuote }
           </div>
