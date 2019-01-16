@@ -58,7 +58,7 @@ class QuoteGenerator extends Component {
               onClick={this.handleRandomQuote}>
               <MlIcon
                 icon="random"
-                size="xs" />
+                size="sm" />
               <span className="ml-4">Get random quote!</span>
             </button>
           </div>
@@ -68,9 +68,7 @@ class QuoteGenerator extends Component {
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-start">
-          <div className="flex-1 flex flex-col items-center justify-start">
-            { displayQuote }
-          </div>
+          { displayQuote }
         </div>
 
       </div>

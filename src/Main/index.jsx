@@ -6,6 +6,7 @@ import MlIcon from 'MyLib/Icon'
 import Welcome from 'components/Welcome'
 import ToDoList from 'components/ToDoList'
 import QuoteGenerator from 'components/QuoteGenerator'
+import FormValidation from 'components/FormValidation'
 
 class Main extends Component {
   render() {
@@ -25,6 +26,7 @@ class Main extends Component {
               <div className="text-white p-2"><Link className="text-white" to='/'>Welcome</Link></div>
               <div className="text-white p-2"><Link className="text-white" to='/todo-list'>TodoList</Link></div>
               <div className="text-white p-2"><Link className="text-white" to='/quote-generator'>Quote Generator</Link></div>
+              <div className="text-white p-2"><Link className="text-white" to='/form-validation'>Form Validation</Link></div>
             </div>
           </div>
         </header>
@@ -35,6 +37,7 @@ class Main extends Component {
               <Route exact path='/' component={Welcome}/>
               <Route path='/todo-list' component={ToDoList}/>
               <Route path='/quote-generator' component={QuoteGenerator}/>
+              <Route path='/form-validation' component={FormValidation}/>
             </Switch>
           </div>
         </div>

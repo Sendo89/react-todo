@@ -119,7 +119,7 @@ class Main extends Component {
               onClick={this.handleReset}>
               <MlIcon
                 icon="sync-alt"
-                size="xs" />
+                size="sm" />
               <span className="ml-4">Reset</span>
             </button>
           </div>
