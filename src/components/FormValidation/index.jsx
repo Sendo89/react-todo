@@ -10,6 +10,7 @@ const INVALID_PASSWORD = 'Please, enter a valid password'
 
 const getInitialState = () => {
   return {
+    isSubmited: false,
     isValid: false,
     username: '',
     birthdate: '',
@@ -58,9 +59,12 @@ class FormValidation extends Component {
 
   handleEmailInput = async (value) => {
     await this.setState({ email: value })
+    const emailRegex = RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 
     if (!!this.state.email.lenght && this.state.email.length < 3) {
       this.setStateFormError({ email: 'Please, enter a valid email' })
+    } else if (!emailRegex.test(value)) {
+      this.setStateFormError({ email: 'Invalid email format' })
     } else {
       this.setStateFormError({ email: '' })
     }
@@ -78,7 +82,9 @@ class FormValidation extends Component {
     }
   }
 
-  handleValidation = async (value) => {
+  handleSubmit = async (value) => {
+    await this.setState({ 'isSubmited': true })
+
     const formIsValid = Object.keys(this.state.formErrors).every((key, othr) => {
       return this.state.formErrors[key] === ''
     })
@@ -100,7 +106,8 @@ class FormValidation extends Component {
   }
 
   renderValidForm = () => {
-    if(!!this.state.isValid) {
+    const resolveValidationIcon = (field) => this.state.isSubmited ? !!field ? 'Error' : 'Ok' : ''
+
       return (
         <div className="w-full flex-1 border border-grey ml-4 flex flex-col items-start justify-start">
           <table className="w-full text-left">
@@ -108,32 +115,34 @@ class FormValidation extends Component {
               <tr>
                   <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</th>
                   <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light text-center">Value</th>
+                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</th>
               </tr>
           </thead>
           <tbody>
               <tr className="hover:bg-blue-lightest">
                   <td className="py-4 px-6 border-b border-grey-light">Username</td>
                   <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.username}</td>
+                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.username)}</td>
               </tr>
               <tr className="hover:bg-blue-lightest">
                   <td className="py-4 px-6 border-b border-grey-light">Birthdate</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.username}</td>
+                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.birthdate}</td>
+                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.birthdate)}</td>
               </tr>
               <tr className="hover:bg-blue-lightest">
                   <td className="py-4 px-6 border-b border-grey-light">Email</td>
                   <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.email}</td>
+                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.email)}</td>
               </tr>
               <tr className="hover:bg-blue-lightest">
                   <td className="py-4 px-6 border-b border-grey-light">Password</td>
                   <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.password}</td>
+                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.password)}</td>
               </tr>
             </tbody>
           </table>
         </div>
       )
-    }
-
-    return null
   }
 
   render () {
@@ -159,45 +168,45 @@ class FormValidation extends Component {
         </div>
 
         <div className="flex-1 flex items-between justify-start">
-          <div className="flex-1 mr-4 flex flex-col items-start justify-start">
+          <div className="w-1/2 mr-4 flex flex-col items-start justify-start">
             <MlInput
               placeholder="Name"
               iconName="user"
               value={this.state.username}
-              error={this.state.formErrors.username}
+              error={this.state.isSubmited && this.state.formErrors.username}
               onChange={this.handleUsernameInput} />
 
             <MlInput
               placeholder="Birthdate (dd/mm/yyyy)"
               iconName="birthday-cake"
               value={this.state.birthdate}
-              error={this.state.formErrors.birthdate}
+              error={this.state.isSubmited && this.state.formErrors.birthdate}
               onChange={this.handleBirthdateInput} />
 
             <MlInput
               placeholder="Email"
               iconName="at"
               value={this.state.email}
-              error={this.state.formErrors.email}
+              error={this.state.isSubmited && this.state.formErrors.email}
               onChange={this.handleEmailInput} />
 
             <MlInput
               placeholder="Password"
               iconName="key"
               value={this.state.password}
-              error={this.state.formErrors.password}
+              error={this.state.isSubmited && this.state.formErrors.password}
               onChange={this.handlePasswordInput} />
 
               <button
                 className="self-center mt-8 flex-no-shrink p-2 px-4 border-2 rounded text-green border-green hover:text-white hover:bg-green"
-                onClick={this.handleValidation}>
+                onClick={this.handleSubmit}>
                 <MlIcon
                   icon="eraser"
                   size="sm" />
                 <span className="ml-4">Validate</span>
               </button>
           </div>
-          <div className="flex-1 ml-4 flex flex-col items-start justify-start">
+          <div className="w-1/2 ml-4 flex flex-col items-start justify-start">
           { this.renderValidForm() }
           </div>
         </div>

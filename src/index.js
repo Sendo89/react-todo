@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
-import prepareApplication from './app/bootstrap'
+import prepareModules from './modules/bootstrap'
 
 import Main from './Main'
 import './styles/tailwind.css'
 
 (async () => {
-  await prepareApplication()
+  await prepareModules()
 
   ReactDOM.render(
     <BrowserRouter>
