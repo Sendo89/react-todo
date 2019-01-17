@@ -3,6 +3,11 @@ import React, { Component } from 'react'
 import MlInput from 'MyLib/Input'
 import MlIcon from 'MyLib/Icon'
 
+const INVALID_USERNAME = 'Please, enter a valid username'
+const INVALID_BIRTHDATE = 'Please, enter a valid birthdate'
+const INVALID_EMAIL = 'Please, enter a valid email'
+const INVALID_PASSWORD = 'Please, enter a valid password'
+
 const getInitialState = () => {
   return {
     isValid: false,
@@ -11,10 +16,10 @@ const getInitialState = () => {
     email: '',
     password: '',
     formErrors: {
-      username: '',
-      birthdate: '',
-      email: '',
-      password: ''
+      username: INVALID_USERNAME,
+      birthdate: INVALID_BIRTHDATE,
+      email: INVALID_EMAIL,
+      password: INVALID_PASSWORD
     }
   }
 }
@@ -23,73 +28,70 @@ class FormValidation extends Component {
   constructor () {
     super()
     this.state = getInitialState()
-
-    this.handleReset = this.handleReset.bind(this)
-    this.handleUsernameInput = this.handleUsernameInput.bind(this)
-    this.handleBirthdateInput = this.handleBirthdateInput.bind(this)
-    this.handleEmailInput = this.handleEmailInput.bind(this)
-    this.handlePasswordInput = this.handlePasswordInput.bind(this)
-    this.handleValidation = this.handleValidation.bind(this)
   }
 
-  handleReset () {
-    this.setState(getInitialState())
+  handleReset = async () => {
+    await this.setState(getInitialState())
   }
 
-  handleUsernameInput (value) {
-    this.setState({ username: value })
+  handleUsernameInput = async (value) => {
+    await this.setState({ username: value })
 
-    if (value.length < 3) {
-      this.setStateFormError({ username: 'Please, enter a valid username' })
+    if (this.state.username.length < 3) {
+      this.setStateFormError({ username: 'Please, use more than 3 characters' })
+    } else if (this.state.username.length > 12) {
+      this.setStateFormError({ username: 'Please, use less than 12 characters' })
     } else {
       this.setStateFormError({ username: '' })
     }
   }
 
-  handleBirthdateInput (value) {
-    this.setState({ birthdate: value })
+  handleBirthdateInput = async (value) => {
+    await this.setState({ birthdate: value })
 
-    if (value.length < 3) {
+    if (!!this.state.birthdate.lenght && this.state.birthdate.length < 3) {
       this.setStateFormError({ birthdate: 'Please, enter a valid birthdate' })
     } else {
       this.setStateFormError({ birthdate: '' })
     }
   }
 
-  handleEmailInput (value) {
-    this.setState({ email: value })
+  handleEmailInput = async (value) => {
+    await this.setState({ email: value })
 
-    if (value.length < 3) {
+    if (!!this.state.email.lenght && this.state.email.length < 3) {
       this.setStateFormError({ email: 'Please, enter a valid email' })
     } else {
       this.setStateFormError({ email: '' })
     }
   }
 
-  handlePasswordInput (value) {
-    this.setState({ password: value })
+  handlePasswordInput = async (value) => {
+    await this.setState({ password: value })
 
-    if (value.length < 3) {
-      this.setStateFormError({ password: 'Please, enter a valid password' })
+    if (!!this.state.password.lenght && this.state.password.length < 3) {
+      this.setStateFormError({ password: 'Please, use more than 3 characters' })
+    } else if (this.state.password.length > 12) {
+      this.setStateFormError({ password: 'Please, use less than 12 characters' })
     } else {
       this.setStateFormError({ password: '' })
     }
   }
 
-  handleValidation (value) {
+  handleValidation = async (value) => {
     const formIsValid = Object.keys(this.state.formErrors).every((key, othr) => {
       return this.state.formErrors[key] === ''
     })
-    console.log('formIsValid', formIsValid)
+
     if (formIsValid) {
-      this.setState({ 'isValid': true })
+      await this.setState({ 'isValid': true })
     } else {
-      this.setState({ 'isValid': false })
+      await this.setState({ 'isValid': false })
     }
   }
 
-  setStateFormError (error = {}) {
-    this.setState({
+  setStateFormError = async (error = {}) => {
+    await this.setState({
       formErrors: {
         ...this.state.formErrors,
         ...error
@@ -97,7 +99,7 @@ class FormValidation extends Component {
     })
   }
 
-  renderValidForm () {
+  renderValidForm = () => {
     if(!!this.state.isValid) {
       return (
         <div className="w-full flex-1 border border-grey ml-4 flex flex-col items-start justify-start">
@@ -105,7 +107,7 @@ class FormValidation extends Component {
           <thead>
               <tr>
                   <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</th>
-                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Value</th>
+                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light text-center">Value</th>
               </tr>
           </thead>
           <tbody>
