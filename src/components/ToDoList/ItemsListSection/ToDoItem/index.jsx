@@ -10,19 +10,19 @@ class TodoItem extends Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  handleNotDone () {
+  handleNotDone = () => {
     this.props.onNotDone(this.props.id)
   }
 
-  handleDone () {
+  handleDone = () => {
     this.props.onDone(this.props.id)
   }
 
-  handleDelete () {
+  handleDelete = () => {
     this.props.onDelete(this.props.id)
   }
 
-  render() {
+  render () {
     const statusBasedClasses = this.props.status === 'done' ? 'line-through text-green-dark' : 'text-grey-dark'
     const notDoneButtonClasses = this.props.status === 'not-done' ? 'text-white bg-grey' : 'text-grey bg-white'
     const doneButtonClasses = this.props.status === 'done' ? 'text-white bg-green' : 'text-green bg-white'

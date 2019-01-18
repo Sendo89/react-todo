@@ -28,20 +28,15 @@ const getInitialState = () => {
 class Main extends Component {
   constructor () {
     super()
-    this.state = getInitialState()
 
-    this.handleReset = this.handleReset.bind(this)
-    this.handleItemAdd = this.handleItemAdd.bind(this)
-    this.handleNotDone = this.handleNotDone.bind(this)
-    this.handleDone = this.handleDone.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
+    this.state = getInitialState()
   }
 
-  handleReset () {
+  handleReset = () => {
     this.setState(getInitialState())
   }
 
-  handleItemAdd (data) {
+  handleItemAdd = (data) => {
     const taskId = !!this.state.taskList[this.state.taskList.length - 1] ?
       (this.state.taskList[this.state.taskList.length - 1].id + 1) :
       1
@@ -65,11 +60,11 @@ class Main extends Component {
     })
   }
 
-  handleBackButton () {
+  handleBackButton = () => {
     window.location.href = window.history.back()
   }
 
-  handleNotDone (taskId) {
+  handleNotDone = (taskId) => {
     const taskIndex = this.findTaskIndex(taskId)
     const updatedTask = [{ ...this.state.taskList[taskIndex], status: 'not-done' }]
     const taskList = this.updateTaskList(taskIndex, updatedTask)
@@ -77,7 +72,7 @@ class Main extends Component {
     this.setState({ taskList: taskList })
   }
 
-  handleDone (taskId) {
+  handleDone = (taskId) => {
     const taskIndex = this.findTaskIndex(taskId)
     const updatedTask = [{ ...this.state.taskList[taskIndex], status: 'done' }]
     const taskList = this.updateTaskList(taskIndex, updatedTask)
@@ -85,20 +80,20 @@ class Main extends Component {
     this.setState({ taskList: taskList })
   }
 
-  handleDelete (taskId) {
+  handleDelete = (taskId) => {
     const taskIndex = this.findTaskIndex(taskId)
     const taskList = this.updateTaskList(taskIndex)
 
     this.setState({ taskList: taskList })
   }
 
-  findTaskIndex (taskId) {
+  findTaskIndex = (taskId) => {
     return this.state.taskList.findIndex(taskFromList => {
       return taskFromList.id === taskId
     })
   }
 
-  updateTaskList (taskIndex, updatedTask = []) {
+  updateTaskList = (taskIndex, updatedTask = []) => {
     return [
       ...this.state.taskList.slice(0, taskIndex),
       ...updatedTask,
@@ -106,7 +101,7 @@ class Main extends Component {
     ]
   }
 
-  render() {
+  render () {
     return (
       <div className="ToDoList flex-1 w-full h-full flex flex-col">
         <div className="my-8">

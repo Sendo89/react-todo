@@ -5,15 +5,15 @@ import cardBackground from 'modules/assets/images/welcome-card-bg.png'
 import reactLogo from 'modules/assets/images/logo.svg'
 
 class Welcome extends Component {
-  handleGithubClick () {
+  handleGithubClick = () => {
     window.open('https://github.com/sendoabll', '_blank')
   }
 
-  handleLinkedinClick () {
+  handleLinkedinClick = () => {
     window.open('https://www.linkedin.com/in/sendoa-barciela-llarena/', '_blank')
   }
 
-  render() {
+  render () {
     return (
       <div className="Welcome flex-1 flex flex-col">
         <div className="my-8">

@@ -49,9 +49,12 @@ class FormValidation extends Component {
 
   handleBirthdateInput = async (value) => {
     await this.setState({ birthdate: value })
+    const birthdateRegex = RegExp(/^((0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/[12]\d{3})$/)
 
     if (!!this.state.birthdate.lenght && this.state.birthdate.length < 3) {
       this.setStateFormError({ birthdate: 'Please, enter a valid birthdate' })
+    } else if (!birthdateRegex.test(value)) {
+      this.setStateFormError({ birthdate: 'Invalid birthdate format, use dd/mm/yyyy' })
     } else {
       this.setStateFormError({ birthdate: '' })
     }
@@ -105,47 +108,9 @@ class FormValidation extends Component {
     })
   }
 
-  renderValidForm = () => {
-    const resolveValidationIcon = (field) => this.state.isSubmited ? !!field ? 'Error' : 'Ok' : ''
-
-      return (
-        <div className="w-full flex-1 border border-grey ml-4 flex flex-col items-start justify-start">
-          <table className="w-full text-left">
-          <thead>
-              <tr>
-                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</th>
-                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light text-center">Value</th>
-                  <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr className="hover:bg-blue-lightest">
-                  <td className="py-4 px-6 border-b border-grey-light">Username</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.username}</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.username)}</td>
-              </tr>
-              <tr className="hover:bg-blue-lightest">
-                  <td className="py-4 px-6 border-b border-grey-light">Birthdate</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.birthdate}</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.birthdate)}</td>
-              </tr>
-              <tr className="hover:bg-blue-lightest">
-                  <td className="py-4 px-6 border-b border-grey-light">Email</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.email}</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.email)}</td>
-              </tr>
-              <tr className="hover:bg-blue-lightest">
-                  <td className="py-4 px-6 border-b border-grey-light">Password</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.password}</td>
-                  <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationIcon(this.state.formErrors.password)}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )
-  }
-
   render () {
+    const resolveValidationText = (field) => this.state.isSubmited ? !!field ? 'Error' : 'Ok' : ''
+
     return (
       <div className="FormValidation flex-1 w-full h-full flex flex-col">
         <div className="my-8">
@@ -191,6 +156,7 @@ class FormValidation extends Component {
               onChange={this.handleEmailInput} />
 
             <MlInput
+              type="password"
               placeholder="Password"
               iconName="key"
               value={this.state.password}
@@ -207,7 +173,39 @@ class FormValidation extends Component {
               </button>
           </div>
           <div className="w-1/2 ml-4 flex flex-col items-start justify-start">
-          { this.renderValidForm() }
+            <div className="w-full flex-1 border border-grey ml-4 flex flex-col items-start justify-start">
+              <table className="w-full text-left">
+              <thead>
+                  <tr>
+                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</th>
+                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light text-center">Value</th>
+                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td className="py-4 px-6 border-b border-grey-light">Username</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.username}</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.username)}</td>
+                  </tr>
+                  <tr>
+                      <td className="py-4 px-6 border-b border-grey-light">Birthdate</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.birthdate}</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.birthdate)}</td>
+                  </tr>
+                  <tr>
+                      <td className="py-4 px-6 border-b border-grey-light">Email</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.email}</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.email)}</td>
+                  </tr>
+                  <tr>
+                      <td className="py-4 px-6 border-b border-grey-light">Password</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.password}</td>
+                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.password)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

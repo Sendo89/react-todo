@@ -2,27 +2,20 @@ import React, { Component } from 'react'
 import ToDoItem from 'components/ToDoList/ItemsListSection/ToDoItem'
 
 class ItemsListSection extends Component {
-  constructor () {
-    super()
-    this.handleNotDone = this.handleNotDone.bind(this)
-    this.handleDone = this.handleDone.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
-  }
-
-  handleNotDone (taskId) {
+  handleNotDone = (taskId) => {
     this.props.onNotDone(taskId)
   }
 
-  handleDone (taskId) {
+  handleDone = (taskId) => {
     this.props.onDone(taskId)
   }
 
-  handleDelete (taskId) {
+  handleDelete = (taskId) => {
     this.props.onDelete(taskId)
   }
 
-  render() {
-    const rows = this.props.taskList.map(task => {
+  render () {
+    const todoItems = this.props.taskList.map(task => {
       return <ToDoItem
         key={task.id}
         id={task.id}
@@ -35,7 +28,7 @@ class ItemsListSection extends Component {
 
     return (
       <div className="ItemsListSection flex flex-col items-center">
-        { rows }
+        { todoItems }
       </div>
     )
   }

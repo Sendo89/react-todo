@@ -51,7 +51,7 @@ class MlInput extends Component {
             { this.renderIconField() }
           </div>
           <input
-            type="text"
+            type={this.props.type || 'text'}
             className="w-full leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow"
             placeholder={this.props.placeholder}
             onChange={this.handleChange} />

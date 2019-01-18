@@ -16,22 +16,21 @@ class QuoteGenerator extends Component {
     super()
 
     this.state = getInitialState()
-    this.handleRandomQuote = this.handleRandomQuote.bind(this)
   }
 
-  handleRandomQuote () {
-    const randomNumber = window.faker.random.number({ min: 0, max: this.state.quotesList.length })
-
-    this.setState({ quoteNumber: randomNumber })
-  }
-
-  async componentDidMount() {
+  async componentDidMount () {
     const quotesList = await this.getQuotesList()
 
     this.setState({ quotesList })
   }
 
-  async getQuotesList () {
+  handleRandomQuote = () => {
+    const randomNumber = window.faker.random.number({ min: 0, max: this.state.quotesList.length })
+
+    this.setState({ quoteNumber: randomNumber })
+  }
+
+  getQuotesList = async () => {
     const quotesList = await axios.get('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
 
     return quotesList.data.quotes
