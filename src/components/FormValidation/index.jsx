@@ -128,7 +128,7 @@ class FormValidation extends Component {
             </button>
           </div>
           <p className="text-grey-darkest my-4">
-            This example is a simple quote generator. In this case, I am using <span className="markup-code">axios</span> for making a request to a github gist from camperbot.
+            This example is a simple form validator. There are some validations with a couple of <span className="markup-code">regular expresions</span> that user must pass to get the form validated. Good luck!
           </p>
         </div>
 

@@ -9,7 +9,7 @@ class MlInput extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.props.onChange(event.target.value)
   }
 
