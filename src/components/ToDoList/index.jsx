@@ -26,11 +26,7 @@ const getInitialState = () => {
 }
 
 class Main extends Component {
-  constructor () {
-    super()
-
-    this.state = getInitialState()
-  }
+  state = getInitialState()
 
   handleReset = () => {
     this.setState(getInitialState())

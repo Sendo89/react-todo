@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 
 class AddItemsSection extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      task: props.task
-    }
+  state = {
+    task: this.props.task
   }
 
   componentDidMount () {

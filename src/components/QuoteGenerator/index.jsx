@@ -12,11 +12,7 @@ const getInitialState = () => {
 }
 
 class QuoteGenerator extends Component {
-  constructor () {
-    super()
-
-    this.state = getInitialState()
-  }
+  state = getInitialState()
 
   async componentDidMount () {
     const quotesList = await this.getQuotesList()

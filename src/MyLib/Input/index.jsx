@@ -3,14 +3,18 @@ import React, { Component } from 'react'
 import MlIcon from 'MyLib/Icon'
 
 class MlInput extends Component {
-  constructor (props) {
-    super(props)
-
-    this.handleChange = this.handleChange.bind(this)
+  state = {
+    value: ''
   }
 
-  handleChange = (event) => {
-    this.props.onChange(event.target.value)
+  handleChange = async (event) => {
+    await this.setState({ value: event.target.value })
+
+    this.props.onChange(this.state.value)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ value: nextProps.value })
   }
 
   renderIconField() {
@@ -51,6 +55,7 @@ class MlInput extends Component {
             { this.renderIconField() }
           </div>
           <input
+            value={this.state.value}
             type={this.props.type || 'text'}
             className="w-full leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow"
             placeholder={this.props.placeholder}

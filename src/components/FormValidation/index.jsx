@@ -26,10 +26,7 @@ const getInitialState = () => {
 }
 
 class FormValidation extends Component {
-  constructor () {
-    super()
-    this.state = getInitialState()
-  }
+  state = getInitialState()
 
   handleReset = async () => {
     await this.setState(getInitialState())
@@ -38,7 +35,7 @@ class FormValidation extends Component {
   handleUsernameInput = async (value) => {
     await this.setState({ username: value })
 
-    if (this.state.username.length < 3) {
+    if (!this.state.username.length || this.state.username.length < 3) {
       this.setStateFormError({ username: 'Please, use more than 3 characters' })
     } else if (this.state.username.length > 12) {
       this.setStateFormError({ username: 'Please, use less than 12 characters' })
@@ -51,7 +48,7 @@ class FormValidation extends Component {
     await this.setState({ birthdate: value })
     const birthdateRegex = RegExp(/^((0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/[12]\d{3})$/)
 
-    if (!!this.state.birthdate.lenght && this.state.birthdate.length < 3) {
+    if (!this.state.birthdate.length || this.state.birthdate.length < 3) {
       this.setStateFormError({ birthdate: 'Please, enter a valid birthdate' })
     } else if (!birthdateRegex.test(value)) {
       this.setStateFormError({ birthdate: 'Invalid birthdate format, use dd/mm/yyyy' })
@@ -64,7 +61,7 @@ class FormValidation extends Component {
     await this.setState({ email: value })
     const emailRegex = RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 
-    if (!!this.state.email.lenght && this.state.email.length < 3) {
+    if (!this.state.email.length || this.state.email.length < 3) {
       this.setStateFormError({ email: 'Please, enter a valid email' })
     } else if (!emailRegex.test(value)) {
       this.setStateFormError({ email: 'Invalid email format' })
@@ -76,7 +73,7 @@ class FormValidation extends Component {
   handlePasswordInput = async (value) => {
     await this.setState({ password: value })
 
-    if (!!this.state.password.lenght && this.state.password.length < 3) {
+    if (!this.state.password.length || this.state.password.length < 3) {
       this.setStateFormError({ password: 'Please, use more than 3 characters' })
     } else if (this.state.password.length > 12) {
       this.setStateFormError({ password: 'Please, use less than 12 characters' })
@@ -133,7 +130,7 @@ class FormValidation extends Component {
         </div>
 
         <div className="flex-1 flex items-between justify-start">
-          <div className="w-1/2 mr-4 flex flex-col items-start justify-start">
+          <div className="w-1/2 flex pr-2 flex-col items-start justify-start">
             <MlInput
               placeholder="Name"
               iconName="user"
@@ -172,39 +169,37 @@ class FormValidation extends Component {
                 <span className="ml-4">Validate</span>
               </button>
           </div>
-          <div className="w-1/2 ml-4 flex flex-col items-start justify-start">
-            <div className="w-full flex-1 border border-grey ml-4 flex flex-col items-start justify-start">
-              <table className="w-full text-left">
-              <thead>
-                  <tr>
-                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</th>
-                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light text-center">Value</th>
-                      <th className="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td className="py-4 px-6 border-b border-grey-light">Username</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.username}</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.username)}</td>
-                  </tr>
-                  <tr>
-                      <td className="py-4 px-6 border-b border-grey-light">Birthdate</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.birthdate}</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.birthdate)}</td>
-                  </tr>
-                  <tr>
-                      <td className="py-4 px-6 border-b border-grey-light">Email</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.email}</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.email)}</td>
-                  </tr>
-                  <tr>
-                      <td className="py-4 px-6 border-b border-grey-light">Password</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{this.state.password}</td>
-                      <td className="py-4 px-6 border-b border-grey-light text-center">{resolveValidationText(this.state.formErrors.password)}</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="w-1/2 flex pl-2">
+            <div className="w-1/2 flex flex-col items-start justify-start flex-1 border border-grey">
+              <div className="w-full text-left flex flex-col">
+                <div className="w-full flex-1 flex">
+                  <div className="w-1/3 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Key</div>
+                  <div className="w-1/3 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Value</div>
+                  <div className="w-1/3 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</div>
+                </div>
+                <div>
+                  <div className="w-full flex-1 flex">
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Username</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.username}</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.username)}</div>
+                  </div>
+                  <div className="w-full flex-1 flex">
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Birthdate</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.birthdate}</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.birthdate)}</div>
+                  </div>
+                  <div className="w-full flex-1 flex">
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Email</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.email}</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.email)}</div>
+                  </div>
+                  <div className="w-full flex-1 flex">
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Password</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.password}</div>
+                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.password)}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

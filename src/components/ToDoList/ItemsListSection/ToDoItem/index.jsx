@@ -2,14 +2,6 @@ import React, { Component } from 'react'
 import MlIcon from 'MyLib/Icon'
 
 class TodoItem extends Component {
-  constructor () {
-    super()
-
-    this.handleNotDone = this.handleNotDone.bind(this)
-    this.handleDone = this.handleDone.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
-  }
-
   handleNotDone = () => {
     this.props.onNotDone(this.props.id)
   }
