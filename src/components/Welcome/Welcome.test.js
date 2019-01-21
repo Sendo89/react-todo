@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import ToDoList from 'components/ToDoList'
+import Welcome from 'components/Welcome'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<ToDoList />, div)
+  ReactDOM.render(<Welcome />, div)
   ReactDOM.unmountComponentAtNode(div)
 })

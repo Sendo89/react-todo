@@ -34,4 +34,8 @@ class ItemsListSection extends Component {
   }
 }
 
+ItemsListSection.defaultProps = {
+  taskList: []
+}
+
 export default ItemsListSection
