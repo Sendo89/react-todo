@@ -10,7 +10,7 @@ const INVALID_PASSWORD = 'Please, enter a valid password'
 
 const getInitialState = () => {
   return {
-    isSubmited: false,
+    isSubmitted: false,
     isValid: false,
     username: '',
     birthdate: '',
@@ -83,7 +83,7 @@ class FormValidation extends Component {
   }
 
   handleSubmit = async (value) => {
-    await this.setState({ 'isSubmited': true })
+    await this.setState({ 'isSubmitted': true })
 
     const formIsValid = Object.keys(this.state.formErrors).every((key, othr) => {
       return this.state.formErrors[key] === ''
@@ -105,8 +105,38 @@ class FormValidation extends Component {
     })
   }
 
+  renderValidFormMessage = () => {
+    return (
+      <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+        <div className="bg-green h-12 w-full flex items-center justify-center text-white px-6">
+          Valid! FOrm submitted.
+        </div>
+      </div>
+    )
+  }
+
+  renderErrorFormMessage = () => {
+    return (
+      <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+        <div className="bg-red h-12 w-full flex items-center justify-center text-white px-6">
+          Error! Try again.
+        </div>
+      </div>
+    )
+  }
+
   render () {
-    const resolveValidationText = (field) => this.state.isSubmited ? !!field ? 'Error' : 'Ok' : ''
+    const resolveValidationText = (field) => this.state.isSubmitted ? !!field ? 'Error' : 'Ok' : ''
+
+    const renderValidFormMessage = () => {
+      if (this.state.isSubmitted && this.state.isValid) {
+        return this.renderValidFormMessage()
+      }
+
+      if (this.state.isSubmitted && !this.state.isValid) {
+        return this.renderErrorFormMessage()
+      }
+    }
 
     return (
       <div className="FormValidation flex-1 w-full h-full flex flex-col">
@@ -135,21 +165,21 @@ class FormValidation extends Component {
               placeholder="Name"
               iconName="user"
               value={this.state.username}
-              error={this.state.isSubmited && this.state.formErrors.username}
+              error={this.state.isSubmitted && this.state.formErrors.username}
               onChange={this.handleUsernameInput} />
 
             <MlInput
               placeholder="Birthdate (dd/mm/yyyy)"
               iconName="birthday-cake"
               value={this.state.birthdate}
-              error={this.state.isSubmited && this.state.formErrors.birthdate}
+              error={this.state.isSubmitted && this.state.formErrors.birthdate}
               onChange={this.handleBirthdateInput} />
 
             <MlInput
               placeholder="Email"
               iconName="at"
               value={this.state.email}
-              error={this.state.isSubmited && this.state.formErrors.email}
+              error={this.state.isSubmitted && this.state.formErrors.email}
               onChange={this.handleEmailInput} />
 
             <MlInput
@@ -157,7 +187,7 @@ class FormValidation extends Component {
               placeholder="Password"
               iconName="key"
               value={this.state.password}
-              error={this.state.isSubmited && this.state.formErrors.password}
+              error={this.state.isSubmitted && this.state.formErrors.password}
               onChange={this.handlePasswordInput} />
 
               <button
@@ -178,26 +208,27 @@ class FormValidation extends Component {
                   <div className="w-1/3 py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Status</div>
                 </div>
                 <div>
-                  <div className="w-full flex-1 flex">
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Username</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.username}</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.username)}</div>
+                  <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+                    <div className="w-1/3 px-6">Username</div>
+                    <div className="w-1/3 px-6">{this.state.username}</div>
+                    <div className="w-1/3 px-6">{resolveValidationText(this.state.formErrors.username)}</div>
                   </div>
-                  <div className="w-full flex-1 flex">
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Birthdate</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.birthdate}</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.birthdate)}</div>
+                  <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+                    <div className="w-1/3 px-6">Birthdate</div>
+                    <div className="w-1/3 px-6">{this.state.birthdate}</div>
+                    <div className="w-1/3 px-6">{resolveValidationText(this.state.formErrors.birthdate)}</div>
                   </div>
-                  <div className="w-full flex-1 flex">
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Email</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.email}</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.email)}</div>
+                  <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+                    <div className="w-1/3 px-6">Email</div>
+                    <div className="w-1/3 px-6">{this.state.email}</div>
+                    <div className="w-1/3 px-6">{resolveValidationText(this.state.formErrors.email)}</div>
                   </div>
-                  <div className="w-full flex-1 flex">
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">Password</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{this.state.password}</div>
-                    <div className="w-1/3 py-4 px-6 border-b border-grey-light">{resolveValidationText(this.state.formErrors.password)}</div>
+                  <div className="w-full flex-1 flex py-4 border-b border-grey-light">
+                    <div className="w-1/3 px-6">Password</div>
+                    <div className="w-1/3 px-6">{this.state.password}</div>
+                    <div className="w-1/3 px-6">{resolveValidationText(this.state.formErrors.password)}</div>
                   </div>
+                  { renderValidFormMessage() }
                 </div>
               </div>
             </div>

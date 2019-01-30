@@ -9,10 +9,6 @@ class Welcome extends Component {
     window.open('https://github.com/sendoabll', '_blank')
   }
 
-  handleLinkedinClick = () => {
-    window.open('https://www.linkedin.com/in/sendoa-barciela-llarena/', '_blank')
-  }
-
   render () {
     return (
       <div className="Welcome flex-1 flex flex-col">
@@ -41,18 +37,15 @@ class Welcome extends Component {
               </div>
             <div className="text-center px-3 pb-6 pt-2">
               <h3 className="text-black text-sm bold font-sans">@sendoabll</h3>
-              <p className="mt-2 font-sans font-light text-grey-dark">Hello!</p>
             </div>
-              <div className="flex justify-center pb-3 text-grey-dark">
-                <div className="text-center mr-3 border-r pr-3 hover:text-grey-darkest cursor-pointer" onClick={this.handleGithubClick}>
-                  <MlIcon prefix="fab" icon="github" size="lg" />
-                  <div className="mt-2">Github</div>
-                </div>
-                <div className="text-center hover:text-grey-darkest cursor-pointer" onClick={this.handleLinkedinClick}>
-                  <MlIcon prefix="fab" icon="linkedin" size="lg" />
-                  <div className="mt-2">Linkedin</div>
-                </div>
+            <div className="flex justify-center pb-3 text-grey-dark">
+              <div
+                className="text-center hover:text-grey-darkest cursor-pointer"
+                onClick={this.handleGithubClick}>
+                <MlIcon prefix="fab" icon="github" size="lg" />
+                <div className="mt-2">Github</div>
               </div>
+            </div>
           </div>
         </div>
       </div>

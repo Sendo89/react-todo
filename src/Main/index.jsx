@@ -23,10 +23,10 @@ class Main extends Component {
             </div>
 
             <div className="flex-1 flex justify-end">
-              <div className="text-white p-2"><Link className="text-white" to='/'>Welcome</Link></div>
-              <div className="text-white p-2"><Link className="text-white" to='/todo-list'>TodoList</Link></div>
-              <div className="text-white p-2"><Link className="text-white" to='/quote-generator'>Quote Generator</Link></div>
-              <div className="text-white p-2"><Link className="text-white" to='/form-validation'>Form Validation</Link></div>
+              <div className="p-2"><Link className="no-underline hover:underline text-white" to='/'>Welcome</Link></div>
+              <div className="p-2"><Link className="no-underline hover:underline text-white" to='/todo-list'>TodoList</Link></div>
+              <div className="p-2"><Link className="no-underline hover:underline text-white" to='/quote-generator'>Quote Generator</Link></div>
+              <div className="p-2"><Link className="no-underline hover:underline text-white" to='/form-validation'>Form Validation</Link></div>
             </div>
           </div>
         </header>
