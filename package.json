@@ -63,9 +63,9 @@
   },
   "scripts": {
     "tailwind": "tailwind build src/styles/tailwind.src.css -c tailwind.js -o src/styles/tailwind.css",
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "start": "npm run tailwind && node scripts/start.js",
+    "build": "npm run tailwind && node scripts/build.js",
+    "test": "npm run tailwind && node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"

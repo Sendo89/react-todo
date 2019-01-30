@@ -10551,6 +10551,31 @@ body {
   z-index: auto;
 }
 
+.blur-1 {
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+}
+
+.blur-2 {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+
+.blur-3 {
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+
+.blur-4 {
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+
+.blur-5 {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
@@ -20553,6 +20578,31 @@ body {
 
   .sm\:z-auto {
     z-index: auto;
+  }
+
+  .sm\:blur-1 {
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
+  }
+
+  .sm\:blur-2 {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+
+  .sm\:blur-3 {
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
+  }
+
+  .sm\:blur-4 {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+  }
+
+  .sm\:blur-5 {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
   }
 }
 
@@ -30559,6 +30609,31 @@ body {
   .md\:z-auto {
     z-index: auto;
   }
+
+  .md\:blur-1 {
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
+  }
+
+  .md\:blur-2 {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+
+  .md\:blur-3 {
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
+  }
+
+  .md\:blur-4 {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+  }
+
+  .md\:blur-5 {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+  }
 }
 
 @media (min-width: 992px) {
@@ -40564,6 +40639,31 @@ body {
   .lg\:z-auto {
     z-index: auto;
   }
+
+  .lg\:blur-1 {
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
+  }
+
+  .lg\:blur-2 {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+
+  .lg\:blur-3 {
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
+  }
+
+  .lg\:blur-4 {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+  }
+
+  .lg\:blur-5 {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+  }
 }
 
 @media (min-width: 1200px) {
@@ -50568,5 +50668,30 @@ body {
 
   .xl\:z-auto {
     z-index: auto;
+  }
+
+  .xl\:blur-1 {
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
+  }
+
+  .xl\:blur-2 {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+
+  .xl\:blur-3 {
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
+  }
+
+  .xl\:blur-4 {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+  }
+
+  .xl\:blur-5 {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
   }
 }

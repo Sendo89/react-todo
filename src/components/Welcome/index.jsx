@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MlIcon from 'MyLib/Icon'
 
-import cardBackground from 'modules/assets/images/welcome-card-bg.png'
+import cardBackground from 'modules/assets/images/react-code.png'
 import reactLogo from 'modules/assets/images/logo.svg'
 
 class Welcome extends Component {
@@ -26,12 +26,12 @@ class Welcome extends Component {
         <div className="flex-1 flex flex-col items-center justify-start">
           <div className="rounded rounded-t-lg overflow-hidden shadow max-w-80 my-3">
               <img
+                className="w-full blur-2"
                 src={cardBackground}
-                className="w-full"
                 alt="Card background" />
               <div className="flex justify-center -mt-8">
                   <img
-                    className="w-24 h-24 bg-white rounded-full border-solid border-grey border -mt-3"
+                    className="relative w-24 h-24 bg-white rounded-full border-solid border-grey border -mt-3"
                     src={reactLogo}
                     alt="React" />
               </div>
