@@ -130,7 +130,6 @@ function build(previousFileSizes) {
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-      console.log('err', err)
       let messages;
       if (err) {
         if (!err.message) {

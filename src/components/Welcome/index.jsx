@@ -6,7 +6,7 @@ import reactLogo from 'app/assets/images/logo.svg'
 
 class Welcome extends Component {
   handleGithubClick = () => {
-    window.open('https://github.com/sendoabll', '_blank')
+    window.open('https://github.com/sendoabll/react-examples', '_blank')
   }
 
   render () {
