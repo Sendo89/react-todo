@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import MlIcon from 'MyLib/Icon'
 
-import cardBackground from 'modules/assets/images/react-code.png'
-import reactLogo from 'modules/assets/images/logo.svg'
+import cardBackground from 'app/assets/images/react-code.png'
+import reactLogo from 'app/assets/images/logo.svg'
 
 class Welcome extends Component {
   handleGithubClick = () => {

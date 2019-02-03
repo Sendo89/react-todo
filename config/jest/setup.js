@@ -1,5 +1,5 @@
-import prepareModules from 'modules/bootstrap'
+import prepareApp from 'app/bootstrap'
 
 (async () => {
-  await prepareModules()
+  await prepareApp()
 })()

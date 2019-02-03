@@ -272,7 +272,7 @@ module.exports = function(webpackEnv) {
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
         'src': `${paths.appSrc}`,
-        'modules': `${paths.appSrc}/modules`,
+        'app': `${paths.appSrc}/app`,
         'components': `${paths.appSrc}/components`,
         'MyLib': `${paths.appSrc}/MyLib`,
         'styles': `${paths.appSrc}/styles`
@@ -483,7 +483,7 @@ module.exports = function(webpackEnv) {
       new PurgecssPlugin({
         // Specify the locations of any files you want to scan for class names.
         paths: glob.sync([
-          path.join(__dirname, `${paths.appSrc}/**/*.vue`)
+          path.join(paths.appSrc, '/**/*.jsx')
         ]),
         extractors: [
           {
@@ -491,7 +491,7 @@ module.exports = function(webpackEnv) {
 
             // Specify the file extensions to include when scanning for
             // class names.
-            extensions: ['html', 'js', 'vue']
+            extensions: ['html', 'js', 'jsx']
           }
         ]
       }),
