@@ -480,6 +480,21 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
+      // new PurgecssPlugin({
+        // Specify the locations of any files you want to scan for class names.
+        // paths: glob.sync([
+          // path.join(paths.appSrc, '/**/*.jsx')
+        // ]),
+        // extractors: [
+          // {
+            // extractor: TailwindExtractor,
+
+            // Specify the file extensions to include when scanning for
+            // class names.
+            // extensions: ['html', 'js', 'jsx']
+          // }
+        // ]
+      // }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
